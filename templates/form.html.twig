@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+    <h1 class="display-6">{{ title }}</h1> 
+    {% if back is defined %}<a class="go-back" href="{{back}}"><i class="fa-solid fa-rotate-left"></i> Volver atrás</a>{% endif %}
+
+    <div id="form-wrap" class="mt-5">
+    
+    {% for flash_message in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+
+    <hr />
+    <p>Campos obligatorios *</p>
+
+{% endblock %}
+

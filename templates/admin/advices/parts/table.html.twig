@@ -1,0 +1,32 @@
+<table class="list-table table table-striped table-hover list-table-advices">
+    <thead>
+        <tr>
+            <th width="60" class="col-id sortable {% if list.orderby == 'id' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}"  orderby="id">#</th>
+            <th class="col-image" width="110">Imagen</th>
+            <th class="col-title sortable {% if list.orderby == 'title' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="title">Título</th>
+            <th width="200" class="col-date sortable {% if list.orderby == 'creationTime' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="creationTime">Fecha de creación</th>
+            <th width="130" >Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for advice in advices %}
+        <tr>
+            <td class="col-id"><a href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/editar/{{advice.id}}">{{advice.id}}</a></td>
+            <td class="col-image">{% if advice.image != null and advice.image != "" %}<a href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/editar/{{advice.id}}"><img src="{{ app.request.getSchemeAndHttpHost() }}/{{advice.image}}" width="100" alt="{{advice.title}}" /></a>{% endif %}</td>
+            <td class="col-title"><a href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/editar/{{advice.id}}">{{advice.title}}</a></td>
+            <td class="col-date"><span class="d-none">{{advice.creationTime |date('Y-m-d H:i:s') }}</span>{{advice.creationTime |date('d/m/Y H:i') }}</td>
+            <td class="col-actions" width="100">
+                <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/subir/{{advice.id}}" class="settings" title="Subir" data-toggle="tooltip"><i class="material-icons">&#xe5d8;</i></a>
+                <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/bajar/{{advice.id}}" class="settings" title="Bajar" data-toggle="tooltip"><i class="material-icons">&#xe5db;</i></a> 
+                <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/editar/{{advice.id}}" class="settings" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a>
+                <a onclick="return confirm('¿Seguro que quieres eliminarlo?');" href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/eliminar/{{advice.id}}" class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xe872;</i></a>
+            </td>
+        </tr>
+    {% endfor %}
+    {% if advices|length == 0 %}
+        <tr>
+            <td class="no-results" colspan="4">No se encontraron elementos</td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>

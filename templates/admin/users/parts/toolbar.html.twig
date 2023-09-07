@@ -1,0 +1,44 @@
+<button class="show-toolbar-btn btn">Opciones <span class="options-show"></span></button>
+<div class="list-toolbar">
+    <form action="" method="get">
+        {% include 'admin/users/parts/filter.html.twig' %}
+        <div class="right-fields d-flex">
+            <!--<div class="view-field">
+                <button type="button" title="Vista de tabla" class="view-table-btn btn {% if list.view == 'table' %}active{% endif %}"><i class="fa-solid fa-table"></i></button> &nbsp; 
+                <button type="button" title="Vista de columnas" class="view-grid-btn btn {% if list.view == 'grid' %}active{% endif %}"><span class="material-icons">apps</span></button>
+            </div>-->
+            <div class="p_size-field">
+                <label for="p_size">Mostrar</label> 
+                <select id="p_size" name="p_size" class="select2">
+                    <option value="12" {% if list.p_size == 12 %}selected{% endif %}>12</option>
+                    <option value="25" {% if list.p_size == 25 %}selected{% endif %}>25</option>
+                    <option value="50" {% if list.p_size == 50 %}selected{% endif %}>50</option>
+                    <option value="100" {% if list.p_size == 100 %}selected{% endif %}>100</option>
+                    <option value="250" {% if list.p_size == 250 %}selected{% endif %}>250</option>
+                    <option value="500" {% if list.p_size == 500 %}selected{% endif %}>500</option>
+                </select>
+            </div>
+
+            <div class="orderby-field">
+                <label for="orderby">Ordernar por</label> 
+                <select id="orderby" name="orderby" class="select2">
+                    <option value="id" {% if list.orderby == 'id' %}selected{% endif %}>ID</option>
+                    <option value="name" {% if list.orderby == 'name' %}selected{% endif %}>Nombre</option>
+                    <option value="email" {% if list.orderby == 'email' %}selected{% endif %}>Email</option>
+                    <option value="role" {% if list.orderby == 'role' %}selected{% endif %}>Rol</option>
+                    <option value="status" {% if list.orderby == 'status' %}selected{% endif %}>Estado</option>
+                    <option value="creationDate" {% if list.orderby == 'creationDate' %}selected{% endif %}>Fecha</option>
+                </select>
+                <span class="sort sort-{{list.order}}"></span>
+            </div>
+            <input type="hidden" id="current_page" name="page" value="{{list.page}}" />
+            <input type="hidden" id="current-order" name="order" value="{{list.order}}" />
+            <input type="hidden" id="current-view" name="view" value="{{list.view}}" />
+            <div class="search-field">
+                <label for="search">Buscar</label>
+                <input type="text" class="input-control" id="search" name="search" value="{% if list.filter.search is defined %}{{list.filter.search}}{% endif %}" /><button type="submit" class="search-submit btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <button class="btn btn-primary filter-clean d-inline-block"><i class="fa-solid fa-eraser"></i></button>
+        </div>
+    </form>
+</div>

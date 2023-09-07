@@ -1,0 +1,45 @@
+<table class="list-table table table-striped table-hover list-table-pictograms">
+    <thead>
+        <tr>
+            <th width="60" class="col-id sortable {% if list.orderby == 'id' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}"  orderby="id">#</th>
+            <th width="150" class="col-image">Imagen</th>						
+            <th class="col-description sortable {% if list.orderby == 'description' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="description">Descripción</th>
+            <th width="200" class="col-date sortable {% if list.orderby == 'creationTime' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="creationTime">Fecha de creación</th>
+            <th width="120">Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for pictogram in pictograms %}
+        <tr>
+            <td class="col-id"><a href="{{ app.request.getSchemeAndHttpHost() }}/admin/pictogramas/editar/{{pictogram.id}}">{{pictogram.id}}</a></td>
+            <td class="col-image"><a href="{{ app.request.getSchemeAndHttpHost() }}/admin/pictogramas/editar/{{pictogram.id}}"><img src="{{ app.request.getSchemeAndHttpHost() }}/{{pictogram.image}}" width="100" alt="{{pictogram.description}}" /></a></td>
+            <td class="col-description"><a href="{{ app.request.getSchemeAndHttpHost() }}/admin/pictogramas/editar/{{pictogram.id}}">{{pictogram.description}}</a></td>
+            <td class="col-date"><span class="d-none">{{pictogram.creationTime |date('Y-m-d H:i:s') }}</span>{{pictogram.creationTime |date('d/m/Y H:i') }}</td>
+            <td class="col-actions" width="100">
+                <a id="view-modal-{{pictogram.id}}" class="view-modal" data-toggle="modal" data-target="#modal-{{pictogram.id}}"  title="Ver" data-toggle="tooltip"><span class="material-icons">zoom_in</span></a> &nbsp; 
+                <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/pictogramas/editar/{{pictogram.id}}" class="settings" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a> &nbsp; 
+                <a onclick="return confirm('¿Seguro que quieres eliminarlo?');" href="{{ app.request.getSchemeAndHttpHost() }}/admin/pictogramas/eliminar/{{pictogram.id}}" class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xe872;</i></a>
+
+                <div id="modal-{{pictogram.id}}" class="modal modal-pictogram modal-lg" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <img src="{{ app.request.getSchemeAndHttpHost() }}/{{pictogram.image}}" width="600" alt="{{pictogram.description}}" class="pb-3" />
+                                <h3>{{pictogram.description}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    {% endfor %}
+    {% if pictograms|length == 0 %}
+        <tr>
+            <td class="no-results" colspan="5">No se encontraron elementos</td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>

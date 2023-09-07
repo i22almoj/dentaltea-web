@@ -1,0 +1,343 @@
+# User account ############################################
+
+login:
+    path: /acceder
+    controller: App\Controller\UserController::login
+
+register:
+    path: /registro
+    controller: App\Controller\UserController::register
+
+resetpass:
+    path: /recuperar-contrasena
+    controller: App\Controller\UserController::resetpass
+
+
+privacy_policy:
+    path: /politica-de-privacidad
+    controller: App\Controller\UserController::privacyPolicy
+
+
+
+# My account ###############################################
+
+profile:
+    path: /mi-cuenta
+    controller: App\Controller\UserController::profile
+
+logout:
+    path: /salir
+
+delete_account:
+    path: /eliminar-cuenta
+    controller: App\Controller\UserController::deleteAccount
+
+
+
+# User Dates ################################################
+
+home:
+    path: /
+    controller: App\Controller\DateController:index
+
+dates:
+    path: /citas
+    controller: App\Controller\DateController:redirectHome  
+
+date_edit:
+    path: /citas/editar/{id}
+    controller: App\Controller\DateController:edit
+
+date_delete:
+    path: /citas/eliminar/{id}
+    controller: App\Controller\DateController:delete
+
+date_new:
+    path: /citas/nueva
+    controller: App\Controller\DateController:new
+
+
+
+# User Sequences ##############################################
+
+sequences:
+    path: /apoyos-visuales
+    controller: App\Controller\SequenceController:index
+
+sequence_edit:
+    path: /apoyos-visuales/editar/{id}
+    controller: App\Controller\SequenceController:edit
+
+sequence_new:
+    path: /apoyos-visuales/nuevo
+    controller: App\Controller\SequenceController:new
+
+sequence_delete:
+    path: /apoyos-visuales/eliminar/{id}
+    controller: App\Controller\Admin\SequenceController::delete
+    defaults:
+        id: null
+
+
+
+# User Advices ################################################
+
+advice:
+    path: /consejos
+    controller: App\Controller\AdviceController:index
+
+
+
+# Admin Users ##################################################
+admin:
+    path: /admin
+    controller: App\Controller\Admin\UserController::admin
+
+admin_users:
+    path: /admin/usuarios
+    controller: App\Controller\Admin\UserController::index
+
+admin_user_delete:
+    path: /admin/usuarios/eliminar/{id}
+    controller: App\Controller\Admin\UserController::delete
+    defaults:
+        id: null
+
+admin_user_edit:
+    path: /admin/usuarios/editar/{id}
+    controller: App\Controller\Admin\UserController::edit
+    defaults:
+        id: null
+
+admin_user_new:
+    path: /admin/usuarios/nuevo
+    controller: App\Controller\Admin\UserController::new
+
+
+# Admin Pictograms ###############################################
+
+admin_pictograms:
+    path: /admin/pictogramas
+    controller: App\Controller\Admin\PictogramController:index
+
+admin_pictogram_edit:
+    path: /admin/pictogramas/editar/{id}
+    controller: App\Controller\Admin\PictogramController:edit
+
+admin_pictogram_new:
+    path: /admin/pictogramas/nuevo
+    controller: App\Controller\Admin\PictogramController:new
+
+admin_pictogram_delete:
+    path: /admin/pictogramas/eliminar/{id}
+    controller: App\Controller\Admin\PictogramController::delete
+    defaults:
+        id: null
+
+
+# Admin Sequences #################################################
+
+admin_sequences:
+    path: /admin/secuencias
+    controller: App\Controller\Admin\SequenceController:index
+
+admin_sequence_edit:
+    path: /admin/secuencias/editar/{id}
+    controller: App\Controller\Admin\SequenceController:edit
+
+admin_sequence_new:
+    path: /admin/secuencias/nueva
+    controller: App\Controller\Admin\SequenceController:new
+
+admin_sequence_delete:
+    path: /admin/secuencias/eliminar/{id}
+    controller: App\Controller\Admin\SequenceController::delete
+    defaults:
+        id: null
+
+
+# Admin Dates ######################################################
+
+admin_dates:
+    path: /admin/citas
+    controller: App\Controller\Admin\DateController:index
+
+admin_date_edit:
+    path: /admin/citas/editar/{id}
+    controller: App\Controller\Admin\DateController:edit
+
+admin_date_new:
+    path: /admin/citas/nueva
+    controller: App\Controller\Admin\DateController:new
+
+admin_date_delete:
+    path: /admin/citas/eliminar/{id}
+    controller: App\Controller\Admin\DateController::delete
+    defaults:
+        id: null
+
+admin_ajax_user_sequences:
+    path: /admin/ajax/user-sequences
+    controller: App\Controller\Admin\DateController::ajaxUserSequences
+
+
+
+# Admin Advices #################################################
+admin_advices:
+    path: /admin/consejos
+    controller: App\Controller\Admin\AdviceController:index
+
+admin_advice_edit:
+    path: /admin/consejos/editar/{id}
+    controller: App\Controller\Admin\AdviceController:edit
+
+admin_advice_new:
+    path: /admin/consejos/nuevo
+    controller: App\Controller\Admin\AdviceController:new
+
+admin_advice_delete:
+    path: /admin/consejos/eliminar/{id}
+    controller: App\Controller\Admin\AdviceController::delete
+    defaults:
+        id: null
+
+admin_advice_up:
+    path: /admin/consejos/subir/{id}
+    controller: App\Controller\Admin\AdviceController:moveUp
+    
+admin_advice_down:
+    path: /admin/consejos/bajar/{id}
+    controller: App\Controller\Admin\AdviceController:moveDown
+
+
+
+# Cron Job Notifications ###########################################
+
+cron:
+    path: /cron
+    controller: App\Controller\API\APIController::cron
+    methods: GET
+
+
+# API Access ########################################################
+
+api_index:
+    path: /api
+    controller: App\Controller\API\APIController::index
+    methods: GET
+
+api_login:
+    path: /api/login
+    controller: App\Controller\API\APIController::login
+    methods: POST
+
+api_privacy_policy:
+    path: /api/privacy-policy
+    controller: App\Controller\API\APIController::privacyPolicy
+    methods: GET
+
+api_register:
+    path: /api/user/register
+    controller: App\Controller\API\UserController::register
+    methods: POST  
+
+api_resetpass:
+    path: /api/user/resetpass
+    controller: App\Controller\API\UserController::resetpass
+    methods: POST        
+
+
+# API My Account ######################################################
+
+api_user:
+    path: /api/user
+    controller: App\Controller\API\UserController::index
+    methods: GET
+
+api_user_edit:
+    path: /api/user/edit
+    controller: App\Controller\API\UserController::edit
+    methods: PUT
+
+api_user_change_password:
+    path: /api/user/change-password
+    controller: App\Controller\API\UserController::changePassword
+    methods: PUT    
+
+api_user_delete:
+    path: /api/user/delete
+    controller: App\Controller\API\UserController::delete
+    methods: PUT
+
+
+# API Dates ############################################################
+
+api_dates:
+    path: /api/dates
+    controller: App\Controller\API\DateController::index
+    methods: GET
+
+api_date:
+    path: /api/dates/item
+    controller: App\Controller\API\DateController::item
+    methods: GET    
+
+api_date_add:
+    path: /api/dates/add
+    controller: App\Controller\API\DateController::add
+    methods: POST
+
+api_date_edit:
+    path: /api/dates/edit
+    controller: App\Controller\API\DateController::edit
+    methods: PUT
+
+api_date_delete:
+    path: /api/dates/delete
+    controller: App\Controller\API\DateController::delete
+    methods: DELETE    
+
+
+# API Sequences #########################################################
+
+api_sequences:
+    path: /api/sequences
+    controller: App\Controller\API\SequenceController::index
+    methods: GET 
+
+api_sequence:
+    path: /api/sequences/item
+    controller: App\Controller\API\SequenceController::item
+    methods: GET
+
+api_sequence_add:
+    path: /api/sequences/add
+    controller: App\Controller\API\SequenceController::add
+    methods: POST
+    
+api_sequence_edit:
+    path: /api/sequences/edit
+    controller: App\Controller\API\SequenceController::edit
+    methods: PUT
+    
+api_sequence_delete:
+    path: /api/sequences/delete
+    controller: App\Controller\API\SequenceController::delete
+    methods: DELETE   
+
+
+
+# API Pictograms #########################################################
+
+api_pictograms:
+    path: /api/pictograms
+    controller: App\Controller\API\PictogramController::index
+    methods: GET      
+
+
+# API Advices ############################################################
+
+api_advices:
+    path: /api/advices
+    controller: App\Controller\API\AdviceController::index
+    methods: GET

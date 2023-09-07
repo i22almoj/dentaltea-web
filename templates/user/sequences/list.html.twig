@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Citas{% endblock %}
+
+{% block body %}
+    
+<section class="list">
+    
+    <div class="table-wrapper">
+        <div class="table-title mb-4">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="d-inline-block">Mis apoyos visuales</h2> <a href="{{ app.request.getSchemeAndHttpHost() }}/apoyos-visuales/nuevo" class="btn-new btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Añadir apoyo visual</span></a>
+                </div>
+                
+            </div>
+        </div>
+            {% for flash_message in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">
+                    {{ flash_message }}
+                </div>
+            {% endfor %} 
+        <br /><br />
+        {% if list is defined and list is not empty %}
+
+            <div id="sequences-list" class="sequences-list">
+                <div class="row">
+
+                {% for sequence in list %}
+                    <div class="item-sequence col-lg-3" item_id="{{sequence.id}}">
+                        <i class="material-icons view-item">&#xe8f4;</i>
+                        <a data-bs-toggle="modal" data-bs-target="#modal-view-sequence-{{sequence.id}}" href="#" class="sequence-thumb" class="d-flex">
+                            {% if sequence.sequencePictograms|length > 0 %} 
+                                {% for i in 0..5 %}
+                                    {% if sequence.sequencePictograms[i] is defined %}
+                                        <img src="{{ app.request.getSchemeAndHttpHost() }}/{{sequence.sequencePictograms[i].pictogram.image}}" />
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </a>
+                        <p class="sequence-description"><a data-bs-toggle="modal" data-bs-target="#modal-view-sequence-{{sequence.id}}" href="#"><strong>{{sequence.description}}</strong></a></p>
+
+                     <!--   <div class="sequence-action">
+                            <a class="edit view-modal" id="view-modal-select-sequence" data-target="#modal-select-sequence"  href="{{ app.request.getSchemeAndHttpHost() }}/apoyos-visuales/editar/{{sequence.id}}" class="settings" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a> &nbsp; 
+                            <a class="delete" href="{{ app.request.getSchemeAndHttpHost() }}/apoyos-visuales/eliminar/{{sequence.id}}" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xe872;</i></a>
+                        </div> -->
+                        {% include 'user/sequences/parts/view-sequence.html.twig' %}
+                    </div>
+                {% endfor %}
+
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% if public is defined and public is not empty %}
+            <hr class="mt-5" />
+            <h5 class="d-inline-block mb-5">Apoyos visuales públicos</h5>
+
+            <div id="public-sequences-list"  class="sequences-list">
+                <div class="row">
+                {% for sequence in public %}
+                    <div class="item-sequence col-lg-3" item_id="{{sequence.id}}">
+                        <i class="material-icons view-item">&#xe8f4;</i>
+                        <a data-bs-toggle="modal" data-bs-target="#modal-view-sequence-{{sequence.id}}" href="#" class="sequence-thumb" class="d-flex">
+                            {% if sequence.sequencePictograms|length > 0 %} 
+                                {% for i in 0..5 %}
+                                    {% if sequence.sequencePictograms[i] is defined %}
+                                        <img src="{{ app.request.getSchemeAndHttpHost() }}/{{sequence.sequencePictograms[i].pictogram.image}}" />
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </a>
+                        <p class="sequence-description"><a data-bs-toggle="modal" data-bs-target="#modal-view-sequence-{{sequence.id}}" href="#"><strong>{{sequence.description}}</strong></a></p>
+                        
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+
+
+</section>
+
+
+
+{% endblock %}

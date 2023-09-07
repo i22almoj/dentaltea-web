@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Política de Privacidad | DentalTEA{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ app.request.getSchemeAndHttpHost() }}/images/favicon.png">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="account">
+       <main id="main" class="d-flex pb-5"> 
+            <section id="content-section">
+                <div id="content">
+                    <div class="wrapper fadeInDown">
+                        <div class="container px-4">
+                            <h2 class="py-4">Política de Privacidad</h2>
+                            <hr />
+                            <div class="pb-5">
+                                {{ content | raw}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        {% include 'parts/footer.html.twig' %}
+
+        <script>
+            var base_url = "{{ url('home') }}";
+        </script>
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
+</html>

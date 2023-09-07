@@ -1,0 +1,19 @@
+.select2-container .select2-selection--single {
+	height: 36px;
+	padding: 4px 0;
+	border-color: #ced4da !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	height: 34px;
+	right: 3px;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+	background-color: $primary;
+	color: #fff;
+}
+
+.select2-results__option {
+	min-height: 36px;
+}

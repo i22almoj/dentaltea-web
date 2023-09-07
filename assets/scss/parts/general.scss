@@ -1,0 +1,161 @@
+body {
+    background: $body-bg;
+    color: $body-color;
+    main#main {
+        display: flex;
+        flex-wrap: nowrap;
+        height: 100vh;
+        height: -webkit-fill-available;
+        max-height: 100vh;
+        overflow-x: auto;
+        overflow-y: hidden;
+        background: #fafafa url(../../images/background.png) repeat;
+        section#content-section {
+            width: 100%;
+        }
+
+        #header{
+            position: fixed;
+            background: #fff;
+            width: 100vw;
+            left: 0;
+            z-index: 98;
+            height: 48px;
+        }
+        #content-section{
+            height: 100vh;
+            overflow-y: auto;
+            position: relative;
+
+            #content{
+                padding-top: 100px;
+                position: relative;
+                padding-bottom: 100px;
+                min-height: 100vh;
+                font-size: 13px;
+
+                #footer {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    padding: 25px 20px;
+                    border-top: solid thin #dedede;
+                    font-size: 14px;
+                    line-height: 22px;
+                }
+            }
+        }
+        aside#sidebar{
+            height: 100vh;
+            overflow-y: auto;
+            position: relative;
+            z-index: 99;
+        }
+    }
+
+    .dropdown-menu{
+        border-radius: 0;
+    }
+
+    .btn{
+        font-family: "Roboto", sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        border-radius: 0;
+        border-radius: 5px;
+        font-size: 14px;
+        line-height: 24px;
+
+        .material-icons{
+            font-size: 20px;
+            margin: -2px 0;
+        }
+    }
+    .btn.btn-primary{
+        background: rgb(91,189,219);
+        background: linear-gradient(90deg, rgba(91,189,219,1) 0%, rgba(96,146,200,1) 80%);
+        border: none;
+        color: #fff;
+        line-height: 24px;
+
+        &:hover, &:focus{
+            background: #ffffffbb;
+            color: $primary;
+            box-shadow: 0px 0px 3px #6092c8;
+        }
+    }
+
+
+    .btn.btn-secondary{
+        border: solid 2px $primary;
+        background: transparent;
+        color: $primary;
+
+        &:hover{
+            background: linear-gradient(90deg, rgba(91,189,219,1) 0%, rgba(96,146,200,1) 80%);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0px 0px 5px $primary;
+        }
+    }
+
+    input[type=text], input[type=password], input[type=email], input[type=search]{
+        border-radius: 0;
+        background: none;
+        border: none;
+        border-bottom: solid 2px $primary;
+        padding-left: 0;
+    }
+
+    .select2-container .select2-selection--single{
+        border-radius: 0;
+        border: none;
+        background: none;
+        border-bottom: solid 2px $primary !important;
+    }
+
+    .list-toolbar .select2-container .select2-selection--single{
+        padding-top: 2px;
+        border: solid 2px #bbb !important;
+        position: relative;
+    }
+
+    .list-toolbar select#filter-role +.select2-container .select2-selection--single{
+        width: 140px !important;
+    }
+    
+
+    .select2-results__option {
+        font-size: 12px !important;
+    }
+
+    .select2-container--open .select2-dropdown{
+        border-radius: 0;
+    }
+
+ 
+
+    textarea, textarea.form-control{
+        border-radius: 0;
+        background: none;
+        border: solid 2px $primary;
+    }
+
+    .alert-success {
+        --bs-alert-bg: #d1e7dd55;
+    }
+}
+
+@media only screen and (max-width:992px) {
+    body {
+        main#main {
+            background-size: 200% auto;
+            background-position: center bottom;
+
+            #header{
+                height: 80px;
+            }
+        }
+    }
+}

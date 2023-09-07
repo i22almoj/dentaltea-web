@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Acceder | DentalTEA{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ app.request.getSchemeAndHttpHost() }}/images/favicon.png">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="account">
+       <main id="main" class="d-flex"> 
+            <section id="content-section">
+                <div id="content">
+                    <div class="wrapper fadeInDown">
+                        <div id="formContent">
+                            <!-- Tabs Titles -->
+                            {% if error is defined and error %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ error.messagekey|trans(error.messageData, 'security') }}
+                                </div>
+                            {% endif %}
+                            <!-- Icon -->
+                        
+                            <img class="pb-5" width="300" src="{{ app.request.getSchemeAndHttpHost() }}/images/logo.png" id="icon" alt="DentalTEA" />
+                            
+                            <h1 class="h5 pb-3">Accede a tu cuenta</h1>
+
+                            <form action="{{ path('login') }}" method="post">
+                                
+                                <div class="mb-3">
+                                    <label for="login" class="form-label required">Email</label>
+                                    <input type="text" id="login" class="form-control" name="_username" autocomplete="_username" value="{% if last_username is defined and last_username %}{{ last_username }}{% endif %}" >
+                                </div>
+                              
+                                <div class="mb-3 input-group">
+                                    <label for="password" class="form-label required">Contraseña</label><br />
+                                    <input type="password" id="password" name="_password" autocomplete="_password"  class="form-control toggle-password white-toggle" spellcheck="false" autocorrect="off" autocapitalize="off"/>
+                                </div>
+                                
+                                <div class="my-4 checkbox-group">
+                                    <input type="checkbox" data-toggle="switchery" data-size="small" data-color="#6092c8" id="remember_me" name="_remember_me" checked />
+                                    <label for="remember_me">Recuérdame</label>
+                                </div>
+
+                                <input type="submit" class="btn btn-primary" value="Acceder">
+                            </form>
+                            <p class="text-center mt-5"><a href="{{ app.request.getSchemeAndHttpHost() }}/recuperar-contrasena">¿Olvidaste tu contraseña?</a></p>
+                     
+                        </div>
+                        <div id="formFooter">
+                            <p class="text-center my-2"><a href="{{ app.request.getSchemeAndHttpHost() }}/registro">¿No tienes una cuenta? Regístrate</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        {% include 'parts/footer.html.twig' %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
+</html>

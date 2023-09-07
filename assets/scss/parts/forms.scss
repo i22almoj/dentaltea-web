@@ -1,0 +1,162 @@
+@import "./forms/select2";
+@import "./forms/switchery";
+@import "./forms/toggle-password";
+@import "./forms/dropify";
+@import "./forms/product";
+@import "./forms/sortable";
+
+#form-wrap{
+    width: 500px;
+    max-width: 100%;
+
+	.invalid-feedback.d-block{
+		position: relative;
+		padding: 1rem;
+		margin-bottom: 1rem;
+		border: 1px solid #f5c2c7;
+		border-radius: 0.25rem;
+		color: #842029;
+		background: #f8d7daaa;
+		border-color: #f5c2c7;
+		border-radius: 0.25rem;
+	}
+}
+
+#form-wrap-double{
+    width: 1030px;
+    max-width: 100%;
+}
+
+.form-check {
+	padding-left: 0;
+}
+
+.form-check-label{
+	margin-left:8px;
+}
+
+label, .form-label{
+	width: 100%;
+}
+
+.dateTimeField{
+	width: 300px;
+	max-width: 100%;
+}
+
+input[type=datetime-local]{
+	background: transparent;
+	border: none;
+	border-bottom: solid 2px $primary;
+	border-radius: 0;	
+}
+
+.go-back{
+	text-decoration: none;
+	color: #424242;
+	&:hover{
+		color: $primary;
+	}
+}
+
+button, .btn{
+	&:focus{
+		outline: none;
+		box-shadow: none;
+	}
+}
+
+.time-field{
+	max-width:100%;
+	width: 260px;
+}
+
+.date-time-field{
+	max-width:100%;
+	width: 260px;
+}
+
+.date-field{
+	max-width:100%;
+	width: 260px;
+}
+
+.user-avatar-group{
+	width: 250px;
+}
+
+.user-avatar-group .dropify-wrapper .dropify-message p{
+	font-size: 17px;
+}
+
+.select-hidden{
+	overflow-y: hidden;
+	height: 0;
+}
+
+#form-wrap .form-check{
+	display: flex;
+	align-items: center;
+	margin: 30px 0;
+
+	.switchery{
+		margin-right: 10px;
+	}
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	right: 0;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered{
+	text-overflow: unset;
+	padding-left: 5px;
+}
+
+#form-wrap.form-md{
+	width: 900px;
+	max-width: 100%;
+}
+
+#form-wrap.form-lg{
+	width: 1200px;
+	max-width: 100%;
+}
+
+#form-wrap.form-xl{
+	width: 1600px;
+	max-width: 100%;
+}
+
+.ql-editor p, .ql-editor li{
+	margin-bottom: 10px;
+}
+
+.ql-editor h1, .ql-editor h2, .ql-editor h3, .ql-editor h4, .ql-editor h5, .ql-editor h6{
+	margin-top: 5px;
+	margin-bottom: 15px;
+	color: #212529;
+	font-weight: 600;
+}
+
+.ql-editor ol, .ql-editor ul {
+	padding-left: 0px;
+}
+
+.ql-toolbar.ql-snow{
+	background: linear-gradient(90deg, rgba(91, 189, 219, 0.7) 0%, rgba(96, 146, 200, 0.7) 90%);
+}
+.ql-editor{
+	background: #fff8;
+}
+
+.ql-container.ql-snow .ql-editor{
+	min-height: 200px;
+}
+
+@media only screen and (max-width:992px) {
+	#form-wrap-double{
+		width: 500px;
+	}
+}
+

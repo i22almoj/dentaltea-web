@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar usuario{% endblock %}
+
+{% block body %}
+    <h1 class="display-6">Editar usuario</h1>
+    <a class="go-back" href="{{ app.request.getSchemeAndHttpHost() }}/admin/usuarios/"><i class="fa-solid fa-arrow-left"></i> Volver atrás</a>
+
+    <div id="form-wrap" class="mt-5">
+    
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+        <hr />
+
+        {% for flash_message in app.session.flashbag.get('notice_pass') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}  
+
+        <h2 class="h5 pb-4 pt-3">Cambiar contraseña</h2>
+        {{ form_start(form_pass) }}
+        {{ form_widget(form_pass) }}
+        {{ form_end(form_pass) }}
+    </div>
+    <hr />
+
+    <p>Campos obligatorios *</p>
+{% endblock %}
+

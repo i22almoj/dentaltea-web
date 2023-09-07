@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mi cuenta{% endblock %}
+
+{% block body %}
+    <h1 class="display-6">Mi cuenta</h1>
+
+    <div id="profile-actions" class="pt-4 d-block">
+        <a  href="{{ app.request.getSchemeAndHttpHost() }}/salir" class="btn btn-primary">Cerrar sesión</a> &nbsp; 
+        <a  href="{{ app.request.getSchemeAndHttpHost() }}/eliminar-cuenta" class="btn btn-primary"  onclick="return confirm('¿Seguro que quieres eliminar tu cuenta?');">Eliminar mi cuenta</a>
+    </div>
+
+    <div id="form-wrap" class="mt-5">
+    
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+  
+        <hr />
+     
+        {% for flash_message in app.session.flashbag.get('notice_pass') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}            
+            <h2 class="h5 pb-4 pt-3">Cambiar contraseña</h2>
+            {{ form_start(form_pass) }}
+            {{ form_widget(form_pass) }}
+            {{ form_end(form_pass) }}
+
+        <hr />
+
+        <p>Campos obligarorios *</p>
+    </div>
+{% endblock %}
+

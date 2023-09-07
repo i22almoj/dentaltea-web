@@ -1,0 +1,18 @@
+<div class="list-grid">
+    <div class="row">
+        {% for advice in advices %}
+        
+        <div class="list-grid-item col-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            {% if advice.image != null and advice.image != "" %}<a href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/editar/{{advice.id}}" class="pb-2 d-block"><img src="{{ app.request.getSchemeAndHttpHost() }}/{{advice.image}}" width="150" alt="{{advice.title}}" /></a>{% endif %}
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/editar/{{advice.id}}"><h2 class="item-title" class="pb-2 d-block">{{advice.title}}</h2></a>
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/editar/{{advice.id}}" class="settings" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> &nbsp; 
+            <a onclick="return confirm('¿Seguro que quieres eliminarlo?');" href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/eliminar/{{advice.id}}" class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+            
+        </div>
+
+        {% endfor %}
+        {% if advices|length == 0 %}
+            <p class="no-results" >No se encontraron elementos</p>
+        {% endif %}
+    </div>
+</div>

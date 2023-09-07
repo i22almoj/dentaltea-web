@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar secuencia{% endblock %}
+
+{% block body %}
+    <h1 class="display-6">Editar secuencia</h1>
+    <a class="go-back" href="{{ app.request.getSchemeAndHttpHost() }}/admin/secuencias/"><i class="fa-solid fa-arrow-left"></i> Volver atrás</a>
+
+    <div id="form-wrap" class="mt-5 form-xl">
+    
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+        
+        <button id="button-add-pictogram" type="button" class="btn btn-secondary btn-new-sequence" data-bs-toggle="modal" data-bs-target="#modal-add-pictogram"><i class="material-icons"></i> <span>Añadir pictograma</span></button>
+
+        <div id="sequence-pictograms-list" class="items-sort">
+            
+            <div class="row" id="sortable">
+                {% for item in sequencePictograms %}
+                <div class="item p-3 text-center" draggable="false" item_id="{{item.pictogram.id}}">
+                    <div class="delete"><span class="material-icons">cancel</span></div>
+                    <div class="content">
+                        <img src="{{ app.request.getSchemeAndHttpHost() }}/{{item.pictogram.image}}"  draggable="false" style="max-width: 100%;"/> <br />
+                        <textarea style="height: auto;">{% if item.description is null %}{{item.pictogram.description}}{% else %}{{item.description}}{% endif %}</textarea>
+                    </div>
+                    <div class="handle"><i class="fas fa-arrows-alt"></i></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% include 'admin/sequences/parts/add-pictogram.html.twig' %}
+        
+        <a href="#" class="btn-new btn btn-primary mt-5 mb-5 btn-save-bottom">Guardar cambios</span></a>
+    </div>
+
+    <hr />
+
+    <p>Campos obligatorios *</p>
+{% endblock %}

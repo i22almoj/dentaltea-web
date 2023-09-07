@@ -1,0 +1,14 @@
+<header id="header" class="mb-3 border-bottom">
+  
+      <div class="d-flex flex-wrap align-items-center justify-content-end justify-content-lg-end">
+      <a id="menu-toggle" class="d-block d-lg-none"><span></span><span></span><span></span></a>
+
+        <div id="header-top-right" class="text-end mb-3 mb-lg-0 me-lg-3 d-block">
+          <a href="{{ app.request.getSchemeAndHttpHost() }}/mi-cuenta/" class="btn d-none d-lg-inline-block btn-outline me-2">{{ app.user.name }}</a>
+          <a  href="{{ app.request.getSchemeAndHttpHost() }}/salir" class="btn btn-primary">Cerrar sesión</a>
+        </div>
+
+        
+      </div>
+    
+</header>

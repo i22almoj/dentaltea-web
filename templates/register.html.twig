@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Crear una cuenta | DentalTEA{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ app.request.getSchemeAndHttpHost() }}/images/favicon.png">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="account">
+       <main id="main" class="d-flex pb-5"> 
+            <section id="content-section">
+                <div id="content">
+                    <div class="wrapper fadeInDown">
+                        <div id="formContent" class="register">
+                            {% for flash_message in app.session.flashbag.get('notice') %}
+                                <div class="alert alert-success">
+                                    {{ flash_message | raw }}
+                                </div>
+                            {% endfor %}
+
+                            <img class="pb-5" src="{{ app.request.getSchemeAndHttpHost() }}/images/logo.png" id="icon" alt="DentalTEA" />
+                            
+                            <h1 class="h5 pb-3">Crear una cuenta</h1>
+                            {{ form_start(form) }}
+                            {{ form_row(form.name) }}
+                            {{ form_row(form.email) }}
+                            {{ form_row(form.password) }}
+                            {{ form_row(form.role) }}
+                            {{ form_end(form) }}
+                    
+                        <p>Campos obligatorios *</p>
+
+                        <div id="modal-privacy" class="modal modal-date modal-lg" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3>Política de privacidad</h3>
+                                        {% include '/parts/privacy.html.twig' %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+       
+                        </div>
+                        <div id="formFooter">
+                            <p class="text-center my-2"><a href="{{ app.request.getSchemeAndHttpHost() }}/acceder">¿Ya tienes una cuenta? Accede</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        {% include 'parts/footer.html.twig' %}
+
+        <script>
+            var base_url = "{{ url('home') }}";
+        </script>
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
+</html>

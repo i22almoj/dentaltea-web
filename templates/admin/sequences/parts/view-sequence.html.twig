@@ -1,0 +1,25 @@
+<div id="modal-view-sequence-{{sequence.id}}" class="modal modal-view-sequence modal-xl" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="sequence-view-content">
+                    <h5 class="sequence-description">{{sequence.description}}</h5>
+
+                    <div class="row">
+                {% for item in sequence.sequencePictograms %}
+                    <div class="col-lg-3 col-md-6 col-sm-1 item p-3 text-center" draggable="false" item_id="{{item.pictogram.id}}">
+                        <div class="content">
+                            <img src="{{ app.request.getSchemeAndHttpHost() }}/{{item.pictogram.image}}"  draggable="false" style="max-width: 100%;"/> <br />
+                            <div class="pictogram-description">{% if item.description is null %}{{item.pictogram.description}}{% else %}{{item.description}}{% endif %}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

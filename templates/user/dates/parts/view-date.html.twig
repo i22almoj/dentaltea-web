@@ -1,0 +1,45 @@
+<div id="modal-date-{{date.id}}" class="modal modal-date modal-lg" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a class="edit-date" title="Editar cita"  href="{{ app.request.getSchemeAndHttpHost() }}/citas/editar/{{date.id}}"><i class="fa fa-pencil"></i> Editar</a>
+                <a class="delete-date" onclick="return confirm('¿Seguro que quieres eliminarla?');" href="{{ app.request.getSchemeAndHttpHost() }}/citas/eliminar/{{date.id}}"  title="Eliminar cita" data-toggle="tooltip"><i class="fa fa-trash"></i> Eliminar</a>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="modal-date-info">
+                    <p><i class="fa fa-calendar-days"></i> {{date.datetime|date('d/m/Y')}} <i class="fa fa-clock"></i> {{date.datetime|date('H:i')}}</p>
+                    {% if date.notificationsMobile and date.notificationsEmail %}
+                        <p><i class="fa-regular fa-bell"></i> Notificaciones en el movil y por email</p>
+                    {% elseif date.notificationsMobile  %}
+                        <p><i class="fa-regular fa-bell"></i> Notificaciones en el movil</p>
+                    {% elseif date.notificationsEmail  %}                               
+                        <p><i class="fa-regular fa-bell"></i> Notificaciones por email</p> 
+                    {% endif %}
+                    <p class="modal-date-description">{{date.description}}</p>
+                </div>
+                {% if date.sequence and date.sequence.id is defined %}
+                <div class="modal-date-sequence">
+                    <span class="material-icons">wallpaper</span>
+
+                    <div class="modal-date-sequence-description">
+                        {{date.sequence.description}}
+                    </div>
+
+                    <div class="modal-date-sequence-pictograms">
+                        <div class="row">
+                            {% for item in date.sequence.sequencePictograms %}
+                                <div class="item col-lg-3 col-md-6">
+                                    <img src="{{item.pictogram.image}}" alt="Pictograma" />
+                                    <p>{{item.description}}</p>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

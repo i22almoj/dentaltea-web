@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+    volumes:
+      - './../.mariadb/mysql:/var/lib/mysql'
+  phpmyadmin:
+    image: docker.io/bitnami/phpmyadmin:5
+    ports:
+      - '8080:8080'
+      - '443:8443'
+    depends_on:
+      - mariadb
+  myapp:
+    image: docker.io/bitnami/symfony:5.4
+    ports:
+      - '80:8000'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - SYMFONY_DATABASE_HOST=mariadb
+      - SYMFONY_DATABASE_PORT_NUMBER=3306
+      - SYMFONY_DATABASE_USER=mariadb
+      - SYMFONY_DATABASE_NAME=mariadb
+    volumes:
+      - './:/app'
+    depends_on:
+      - mariadb

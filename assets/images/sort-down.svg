@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   class="svg-inline--fa fa-sort-down"
+   aria-hidden="true"
+   focusable="false"
+   data-prefix="fas"
+   data-icon="sort-down"
+   role="img"
+   viewBox="0 0 320 200"
+   data-fa-i2svg=""
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="sort-down.svg"
+   width="320"
+   height="200"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="1.4199219"
+     inkscape:cx="46.129298"
+     inkscape:cy="255.64787"
+     inkscape:window-width="2560"
+     inkscape:window-height="1371"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     fill="currentColor"
+     d="m 312.80307,52.461825 -132.4,136.800005 c -5.4,5.4 -12.4,8.1 -19.5,8.1 -7.055,0 -14.12,-2.702 -19.47,-8.109 L 9.0330691,52.452825 c -17.359,-17.291 -5.075,-47.0909999 19.5299999,-47.0909999 H 293.26307 c 24.54,0 36.84,29.7999999 19.54,47.0999999 z"
+     id="path2" />
+</svg>

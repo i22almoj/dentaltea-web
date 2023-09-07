@@ -1,0 +1,50 @@
+#advicesList{
+    > h2{
+        font-family: "Hanken Grotesk", serif !important;
+        font-weight: bold;
+        color: rgb(96, 146, 200);
+    }
+    #advicesAccordion{
+        width: 800px;
+        max-width: 100%;
+        margin-top: 30px;
+
+        h2.accordion-header {
+            position: relative;
+            top: 0;
+            button{
+                img{
+                    margin-right: 25px;
+                }
+            }
+        }
+
+        .accordion-item{
+            margin-bottom: 25px;
+
+            .accordion-body{
+                padding-top: 40px;
+                padding-bottom: 40px;
+                font-size: 14px;
+                p{
+                    text-align: justify;
+                    img{
+                        display: block;
+                        margin: auto;
+                    }
+                }
+                ul{
+                    padding-left: 15px;
+
+                    li{
+                        list-style-type: "\27A2";
+                        list-style-position: outside;
+                        padding-left: 10px;
+                        padding-bottom: 10px;
+                        text-align: justify;
+                    }
+                }
+            }
+        }
+    }
+}

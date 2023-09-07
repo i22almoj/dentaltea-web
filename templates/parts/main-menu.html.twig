@@ -1,0 +1,72 @@
+
+{% set path = path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) %}
+{% set base_url = app.request.getSchemeAndHttpHost() %}
+
+
+<ul id="main-menu" class="nav nav-pills flex-column mb-auto">
+    <li class="{% if path == '/' or path starts with '/citas' %} active {% endif %}">
+        <a href="{{ base_url }}/" class="nav-link">
+            <span class="material-icons">calendar_month</span>
+            <span>Citas</span>
+        </a>
+    </li>
+    <li class="nav-item {% if path starts with '/apoyos-visuales' %} active {% endif %}">
+        <a href="{{ base_url }}/apoyos-visuales" class="nav-link">
+            <span class="material-icons">wallpaper</span>
+            <span>Apoyos visuales</span>
+        </a>
+    </li>
+    <li class="{% if path starts with '/consejos' %} active {% endif %}">
+        <a href="{{ base_url }}/consejos" class="nav-link">
+            <span class="material-icons">speaker_notes</span>
+            <span>Consejos</span>
+        </a>
+    </li>
+    <li class="nav-item {% if path starts with '/mi-cuenta' %} active {% endif %}">
+        <hr />
+        <a href="{{ base_url }}/mi-cuenta/" class="nav-link">
+            <span class="material-icons">manage_accounts</span>
+            <span>Mi cuenta</span>
+        </a>
+    </li>
+    {% if app.user.role == 'ROLE_ADMIN' %}
+    <li class="nav-item {% if path starts with '/admin' %} active {% endif %} has-children">
+        <a href="{{ base_url }}/admin" class="nav-link" aria-current="page">
+            <span class="material-icons">settings</span>
+            <span>Administración</span>
+        </a>
+        <ul class="sub-menu">
+            <li class="nav-item {% if path starts with '/admin/usuarios' %} active {% endif %}">
+                <a href="{{ base_url }}/admin/usuarios" class="nav-link">
+                    <span class="material-icons">supervisor_account</span>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+            <li class="{% if path starts with '/admin/pictogramas' %} active {% endif %}">
+                <a href="{{ base_url }}/admin/pictogramas" class="nav-link">
+                    <span class="material-icons">image</span>
+                    <span>Pictogramas</span>
+                </a>
+            </li>
+            <li class="{% if path starts with '/admin/secuencias' %} active {% endif %}">
+                <a href="{{ base_url }}/admin/secuencias" class="nav-link">
+                    <span class="material-icons">theaters</span>
+                    <span>Secuencias</span>
+                </a>
+            </li>
+            <li class="nav-item {% if path starts with '/admin/citas' %} active {% endif %}">
+                <a href="{{ base_url }}/admin/citas" class="nav-link">
+                    <span class="material-icons">calendar_month</span>
+                    <span>Citas</span>
+                </a>
+            </li>
+            <li class="{% if path starts with '/admin/consejos' %} active {% endif %}">
+                <a href="{{ base_url }}/admin/consejos" class="nav-link">
+                    <span class="material-icons">speaker_notes</span>
+                    <span>Consejos</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    {% endif %}
+</ul>

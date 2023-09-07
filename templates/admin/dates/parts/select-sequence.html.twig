@@ -1,0 +1,54 @@
+<div id="select-sequence">
+
+{% if user_sequences is defined and user_sequences is not empty %}
+<h3>Secuencias de {{user.name}}:</h3>
+    <div class="row">
+    {% for sequence in user_sequences %}
+         <div class="item-sequence col-lg-3" item_id="{{sequence.id}}">
+            <div class="sequence-thumb" class="d-flex">
+                {% if sequence.sequencePictograms|length > 0 %} 
+                    {% for i in 0..5 %}
+                        {% if sequence.sequencePictograms[i] is defined %}
+                            <img src="{{ app.request.getSchemeAndHttpHost() }}/{{sequence.sequencePictograms[i].pictogram.image}}" />
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <p class="sequence-description"><strong>{{sequence.description}}</strong></p>
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+
+
+{% if public_sequences is defined and public_sequences is not empty %}
+
+{% if user_sequences is defined and user_sequences is not empty %}
+<hr class="mt-5 mb-5" />
+{% endif %}
+
+<h3>Secuencias públicas:</h3>
+    <div class="row">
+    {% for sequence in public_sequences %}
+         <div class="item-sequence col-lg-3" item_id="{{sequence.id}}">
+            <div class="sequence-thumb" class="d-flex">
+                {% if sequence.sequencePictograms|length > 0 %} 
+                    {% for i in 0..5 %}
+                        {% if sequence.sequencePictograms[i] is defined %}
+                            <img src="{{ app.request.getSchemeAndHttpHost() }}/{{sequence.sequencePictograms[i].pictogram.image}}" />
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <p class="sequence-description"><strong>{{sequence.description}}</strong></p>
+        </div>
+    {% endfor %}
+    </div>
+{% endif %}
+
+{% if (user_sequences is not defined or user_sequences is empty) and 
+(public_sequences is not defined or public_sequences is empty) %}
+    <h3 class="not-found">No se encontraron elementos.</h3>
+{% endif %}
+
+</div>

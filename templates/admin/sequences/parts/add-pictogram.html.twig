@@ -1,0 +1,27 @@
+<div id="modal-add-pictogram" class="modal modal-add-pictogram modal-xl" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div id="add-pictogram-list">
+                    <h4 class="text-center mb-3">Selecciona un pictograma</h4>
+                    <div class="row">
+                        {%for pictogram in pictograms %}
+                        <div class="col-lg-2 pictogram-item p-2" item_id="{{pictogram.id}}">
+                            <img class="pictogram-image" src="{{ app.request.getSchemeAndHttpHost() }}/{{pictogram.image}}" />
+                            <p class="pictogram-description">{{pictogram.description}}</p>
+                            <div class="add-pictogram-button"><span class="material-icons-outlined">add_circle</span></div>
+                        </div>
+                        {% endfor %}
+                        {% if pictograms|length == 0 %}
+                            <p>No se encuentran pictogramas</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                    

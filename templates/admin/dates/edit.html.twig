@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar cita{% endblock %}
+
+{% block body %}
+    <h1 class="display-6">Editar cita</h1>
+    <a class="go-back" href="{{ back }}"><i class="fa-solid fa-arrow-left"></i> Volver atrás</a>
+
+    <div id="form-wrap" class="mt-5  form-md">
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+
+        <div id="selected-sequence">
+            <label>Apoyo visual:</label>            
+            <div class="sequence-thumb" class="d-flex">
+                {% if date.sequence and date.sequence.sequencePictograms|length > 0 %} 
+                    {% for i in 0..5 %}
+                        {% if date.sequence.sequencePictograms[i] is defined %}
+                            <img src="{{ app.request.getSchemeAndHttpHost() }}/{{date.sequence.sequencePictograms[i].pictogram.image}}" />
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <p class="sequence-description">{% if date.sequence %}<strong>{{date.sequence.description}}</strong>{% else %}No seleccionado{% endif %}</p>
+            <div class="sequence-action">
+                <a class="edit view-modal" id="view-modal-select-sequence" data-target="#modal-select-sequence"  href="#" class="settings" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> &nbsp; 
+                <a class="delete {% if date.sequence is empty %}d-none{% endif %}" href="#" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+            </div>
+        </div>
+        <input id="_token" value="{{token}}" type="hidden" />
+    </div>
+    <div id="modal-select-sequence" class="modal modal-select-sequence modal-xl" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h2>Selecciona una secuencia</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    {% include 'admin/dates/parts/select-sequence.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <p>Campos obligatorios *</p>
+{% endblock %}
+

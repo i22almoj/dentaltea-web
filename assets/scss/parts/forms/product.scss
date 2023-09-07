@@ -1,0 +1,48 @@
+.product-form-container{
+    width: 1600px;
+    max-width:100%;
+
+    .form-block{
+        h2{
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+
+        &#images-block{
+
+            h2 .btn{
+                height: 40px;
+                background-color: $primary;
+                border-color: $primary;
+                color: $white;
+                padding: 6px 6px 6px 2px;
+                &:hover{
+                    background-color: transparent;
+                    color: $primary;
+                }
+            }
+
+        }
+
+        #product_edit_price{
+            max-width: 70px;
+        }
+
+        .input-group-text{
+            background: $primary;
+            color: $white;
+        }
+
+        .modal{
+            .btn.close{
+                border: none;
+                padding: 0;
+                &:hover, &:focus{
+                    border: none;
+                }
+            }
+        }
+    }
+}

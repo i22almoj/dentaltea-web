@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Citas{% endblock %}
+
+{% block body %}
+    
+<section class="list">
+    
+    <div class="table-wrapper">
+        <div class="table-title mb-4">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="d-inline-block">Citas</h2> <a href="{{ app.request.getSchemeAndHttpHost() }}/citas/nueva" class="btn-new btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Añadir cita</span></a>
+                </div>
+                
+            </div>
+        </div>
+            {% for flash_message in app.session.flashbag.get('notice') %}
+                <div class="alert alert-success">
+                    {{ flash_message }}
+                </div>
+            {% endfor %} 
+
+        <div id="calendarDates" class="fullcalendar-wraper"></div>
+
+        <script>
+            var userDates = [
+                {% for date in dates %}
+                    {
+                        id: {{date.id}},
+                        title: "{{date.description}}",
+                        start: "{{date.datetime|date('Y-m-d H:i')}}"
+                    },
+                {% endfor %}
+            ];
+        </script>
+    </div>
+
+
+    {% for date in dates %}
+
+        {% include 'user/dates/parts/view-date.html.twig' %}
+        
+    {% endfor %}
+</section>
+
+{% endblock %}

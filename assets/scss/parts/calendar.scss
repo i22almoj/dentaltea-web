@@ -1,0 +1,209 @@
+.fullcalendar-wraper.fc{
+    width: 100vh;
+    
+
+    table.fc-scrollgrid{
+        box-shadow: 0px 0px 8px rgba($primary, 0.5);
+
+        thead{
+            background: rgba($primary, 0.8);
+            .fc-col-header-cell-cushion{
+                color: #ffffff;
+                text-decoration: none;
+                padding: 8px 0;
+                text-transform: uppercase;
+            }
+            
+        }
+
+        tbody{
+            td{
+
+                background: #ffffff66;
+
+                &:hover{
+                    background: transparent;
+                }
+                .fc-daygrid-day-number{
+                    text-decoration: none;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+
+                .fc-event{
+                    padding: 10px 5px;
+                    cursor: pointer;
+                    font-size: 12px;
+                    background: rgba($primary, 0.75);
+                    color: #fff;
+
+                    .fc-daygrid-event-dot{
+                        display: none;
+                    }
+
+                    &:hover{
+
+                    background: rgba($primary, 0.95);
+                    }
+                }
+
+                .fc-daygrid-day.fc-day-today {
+                    background-color: rgba($primary, 0.2);
+                    transition: all 0.5s;
+
+                    &:hover{
+                        background-color: rgba($primary, 0.3);
+                        transition: all 0.5s;
+                    }
+                }
+            }
+        }
+        
+    }
+
+    
+}
+
+.modal-date{
+
+    .modal-dialog{
+        max-height: calc(100vh - 50px);
+        overflow-y: auto;
+        max-width: 1024px;
+    }
+
+    .modal-header{
+        a.edit-date, a.delete-date{
+            float: left; 
+            text-decoration: none;
+            font-size: 13px;
+            margin-left: 10px;
+            padding-top: 5px;
+            letter-spacing: 0.1px;
+            i.fa, .svg-inline--fa{
+                font-size: 16px;
+            }
+
+            &:hover{
+                color: #222;
+            }
+        }
+        a.delete-date{
+            margin-left: 20px;
+        }
+    }
+    .modal-body{
+        .modal-date-info{
+            font-size: 16px;
+
+            p{
+                font-size: 16px;
+
+                i.fa, .svg-inline--fa{
+                    display: inline-block;
+                    margin-left: 20px;
+                    margin-right: 5px;
+                    font-size: 20px;
+                    color: $primary;
+                }
+
+                &.modal-date-description{
+                    color: #424242;
+                }
+            }
+
+            
+        }
+        .modal-date-sequence{
+            border-top: solid thin rgba($primary, 0.8);
+            padding: 30px 0;
+            font-size: 16px;
+
+            .modal-date-sequence-description{
+                padding-bottom:30px;
+            }
+
+            > .material-icons{
+                color: $primary;
+                font-size: 35px;
+            }
+
+            .modal-date-sequence-pictograms{
+                .row{
+                    .item{
+                        img{
+                            width: 90%;
+                            height: auto;
+                            margin: 0 auto 15px;
+                        }
+                        font-size: 14px;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+@media only screen  and (max-width:1500px) {
+    .fullcalendar-wraper.fc{
+        width: calc(100vw - 300px);
+    }
+}
+
+
+@media only screen  and (max-width:990px) {
+    .fullcalendar-wraper.fc{
+        width: calc(100vw - 30px);
+        height: 100vw;
+        min-height: 450px;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .fullcalendar-wraper.fc{
+        width: calc(100vw - 15px);
+
+        table.fc-scrollgrid{
+            tbody{
+                td{
+                    .fc-daygrid-day-number{
+                        
+                    }
+    
+                    .fc-event{
+                        padding: 5px;
+                        justify-content: center;
+                        .fc-event-title{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:400px) {
+    .fullcalendar-wraper.fc{
+
+        table.fc-scrollgrid{
+            tbody{
+                td{
+                    .fc-daygrid-day-number{
+                        font-size: 10px;                        
+                    }
+    
+                    .fc-event{
+                        font-size: 10px;
+                        padding: 5px;
+                        justify-content: center;
+                        .fc-event-time{
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

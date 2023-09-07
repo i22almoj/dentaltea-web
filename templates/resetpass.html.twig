@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Recuperar contraseña | DentalTEA{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ app.request.getSchemeAndHttpHost() }}/images/favicon.png">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body class="account">
+       <main id="main" class="d-flex py-5"> 
+            <section id="content-section">
+                <div id="content">
+                    <div class="wrapper fadeInDown">
+                        <div id="formContent">
+                            {% for flash_message in app.session.flashbag.get('notice') %}
+                                <div class="alert alert-success">
+                                    {{ flash_message | raw }}
+                                </div>
+                            {% endfor %}
+                            {% for flash_message in app.session.flashbag.get('warning') %}
+                                <div class="alert alert-danger">
+                                    {{ flash_message | raw }}
+                                </div>
+                            {% endfor %}
+                            
+                            <img class="pb-5" src="{{ app.request.getSchemeAndHttpHost() }}/images/logo.png" id="icon" alt="DentalTEA" />
+                            
+                            {% if form is defined %}
+                                <h1 class="h5 pb-3">Recuperar contraseña</h1>
+
+                                {{ form_start(form) }}
+                                {{ form_widget(form) }}
+                                {{ form_end(form) }}
+                            {% endif %}
+
+                            <p class="text-center mt-5"><a href="{{ app.request.getSchemeAndHttpHost() }}/acceder">Acceder a tu cuenta</a></p>
+                     
+                        </div>
+                        <div id="formFooter">
+                            <p class="text-center my-2"><a href="{{ app.request.getSchemeAndHttpHost() }}/registro">¿No tienes una cuenta? Regístrate</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        {% include 'parts/footer.html.twig' %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
+</html>

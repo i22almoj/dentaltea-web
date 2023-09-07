@@ -1,0 +1,29 @@
+<div class="list-grid">
+    <div class="row">
+        {% for sequence in sequences %}
+        
+        <div class="list-grid-item col-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/secuencias/editar/{{sequence.id}}" class="d-block pb-2">
+                <div class="sequence-thumb" class="d-flex">
+                    {% if sequence.sequencePictograms|length > 0 %} 
+                        {% for i in 0..5 %}
+                            {% if sequence.sequencePictograms[i] is defined %}
+                                <img src="{{ app.request.getSchemeAndHttpHost() }}/{{sequence.sequencePictograms[i].pictogram.image}}" />
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </a>
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/secuencias/editar/{{sequence.id}}" class="d-block pb-1"><h2 class="item-description">{{sequence.description}}</h2></a>
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/secuencias/editar/{{sequence.id}}" class="d-block pb-2">Autor: <strong>{{sequence.author.name }}</strong></a>
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/secuencias/editar/{{sequence.id}}" class="settings" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> &nbsp; 
+            <a onclick="return confirm('¿Seguro que quieres eliminarlo?');" href="{{ app.request.getSchemeAndHttpHost() }}/admin/secuencias/eliminar/{{sequence.id}}" class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+            
+        </div>
+
+        {% endfor %}
+        {% if sequences|length == 0 %}
+            <p class="no-results" >No se encontraron elementos</p>
+        {% endif %}
+    </div>
+</div>

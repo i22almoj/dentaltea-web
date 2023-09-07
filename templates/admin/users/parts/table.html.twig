@@ -1,0 +1,32 @@
+<table class="list-table table table-striped table-hover list-table-users">
+    <thead>
+        <tr>
+            <th class="col-id sortable {% if list.orderby == 'id' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}"  orderby="id">#</th>
+            <th class="col-name sortable {% if list.orderby == 'name' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="name">Nombre</th>						
+            <th class="col-email sortable {% if list.orderby == 'email' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="email">Email</th>
+            <th class="col-role sortable {% if list.orderby == 'role' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="role">Rol</th>
+            <th class="col-date sortable {% if list.orderby == 'creationTime' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="creationTime">Fecha de registro</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for user in users %}
+        <tr>
+            <td class="col-id">{{user.id}}</td>
+            <td class="col-name"><a href="{{ app.request.getSchemeAndHttpHost() }}/admin/usuarios/editar/{{user.id}}">{{user.name}}</a></td>
+            <td class="col-email d-none d-md-table-cell"><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+            <td class="col-role">{% if user.role == 'ROLE_USER' %}Usuario común{% elseif user.role == 'ROLE_ADMIN' %}<strong>Administrador</strong>{% endif %}</td>
+            <td class="col-date"><span class="d-none">{{user.creationTime |date('Y-m-d H:i:s') }}</span>{{user.creationTime |date('d/m/Y') }}</td>
+            <td class="col-actions">
+                <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/usuarios/editar/{{user.id}}" class="settings" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                <a onclick="return confirm('¿Seguro que quieres eliminarlo?');" href="{{ app.request.getSchemeAndHttpHost() }}/admin/usuarios/eliminar/{{user.id}}" class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+            </td>
+        </tr>
+    {% endfor %}
+    {% if users|length == 0 %}
+        <tr>
+            <td class="no-results" colspan="7">No se encontraron elementos</td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>

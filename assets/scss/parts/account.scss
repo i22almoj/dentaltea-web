@@ -1,0 +1,218 @@
+
+
+body.account {
+    background: #f0f0f0;
+    height: 100vh;
+    
+    a {
+        color: $primary;
+        display:inline-block;
+        text-decoration: none;
+        font-weight: 400;
+
+        &:hover{
+            color: $gray-600;
+        }
+    }
+
+    .wrapper {
+        display: flex;
+        align-items: center;
+        flex-direction: column; 
+        justify-content: center;
+        width: 100%;
+        min-height: 100%;
+        padding: 20px 0;
+    }
+    
+    #formFooter {
+        border-top: 1px solid $gray-200;
+        padding: 25px;
+        text-align: center;
+        -webkit-border-radius: 0 0 10px 10px;
+        border-radius: 0 0 10px 10px;
+
+        a{
+            color: rgba(33, 36, 41, 0.8);   
+        }
+    }
+    
+    #formContent {
+        background: $primary+ee;
+        width: 90%;
+        max-width: 550px;
+        position: relative;
+        color: #fff;
+        padding: 30px 50px;
+        -webkit-box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
+        text-align: center;
+        
+
+        .alert{
+            background: #fff7 !important;
+
+            a{
+                color: $primary;
+                text-decoration: underline;
+            }
+        }
+
+        .invalid-feedback{
+            color: #fff !important;
+
+            
+        }
+       
+        .mb-3, .mb-4{
+            text-align: left;
+            padding-bottom:5px;
+        }
+
+        label{
+            width: 100%;
+            font-family: "Roboto", sans-serif !important;
+        }
+
+        .privacy-check{
+            .form-check-label{
+                a{
+                    text-decoration: underline;
+                }
+            }
+
+            .form-check-input[type="checkbox"] {
+                
+            }
+
+            .form-check-input:checked[type="checkbox"] {
+                background-color: transparent !important;
+            }
+            .form-check-input:focus:checked[type="checkbox"] {
+                background-color: transparent !important;
+                background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 20 20%27%3e%3cpath fill=%27none%27 stroke=%27%23fff%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%273%27 d=%27M6 10l3 3l6-6%27/%3e%3c/svg%3e");
+                background-position: 0px 0px !important;
+                background-size: 100% !important;
+            }
+        }
+
+        img{
+            width: 300px;
+            max-width:100%;
+            margin-top: 0px;
+            margin-bottom: 30px;
+        }
+
+        .form-logo{
+            display: block;
+            margin: 0 0 40px;
+            max-width:100%;
+        }
+        
+        .select2-container .select2-selection--single{
+            border-color: #fff !important;
+            color: #fff;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered{
+            color: #fff;
+        }
+        
+        textarea{
+            border-color: #fff;
+            color: #fff;
+            &:focus{
+                background: none;
+            }
+        }
+        
+        input{
+            text-align: left;
+            color: #fff;
+            border-color: #fff;
+
+            &::placeholder{
+                color: #fff;
+            }
+            &:focus{
+                background: none;
+                border: none;
+                border-bottom: solid 2px $primary;
+                background-repeat: no-repeat;
+                background-position: right calc(0.375em + 0.1875rem) center;
+                background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+            }
+        }
+        a{
+            color: #fff;
+        }
+        .btn{
+            text-transform: uppercase;
+            width: 200px;
+            text-align: center;
+            padding: 10px;
+            border-color: $primary;
+            background-color: $primary;
+            display: block;
+            margin-left: auto;
+            color: #fff;
+            margin: 50px auto 0;
+            &:hover{
+                background: #ffffff99;
+                color: $primary;
+            }
+            
+        }
+        
+        h1, h1.h5{
+            font-family: "Roboto", sans-serif !important;
+            width: 100%;
+            text-transform: none;
+            font-weight: 500;
+            text-align: left;
+            color: #fff;
+        }
+        
+        .checkbox-group{
+            text-align: left;
+            display: flex;
+            
+            label{
+                display: inline-block;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    main#main #content-section #content{
+        padding: 0;
+        display: flex;
+    }
+
+
+    #footer{
+        display: none;
+    }
+
+    
+    #modal-privacy{
+        .modal-dialog .modal-content{
+            .modal-body{
+                color: #434334;
+                text-align: justify;
+
+                a{
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width:768px) {
+    body.account #formContent img{
+        width: 200px;
+        height: auto;
+    }
+}

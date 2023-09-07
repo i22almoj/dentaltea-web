@@ -1,0 +1,10 @@
+<div id="filter">
+    <div class="filter-field">
+        <label for="filter-role">Rol</label> 
+        <select id="filter-role" name="filter[role]" class="select2">
+            <option value="">Todos los roles</option>
+            <option value="ROLE_ADMIN" {% if list.filter.role is defined and list.filter.role == 'ROLE_ADMIN' %}selected{% endif %}>Administrador</option>
+            <option value="ROLE_USER" {% if list.filter.role is defined and list.filter.role == 'ROLE_USER' %}selected{% endif %}>Usuario</option>
+        </select>
+    </div>
+</div>

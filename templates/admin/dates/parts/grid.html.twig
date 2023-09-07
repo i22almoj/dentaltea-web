@@ -1,0 +1,19 @@
+<div class="list-grid">
+    <div class="row">
+        {% for date in dates %}
+        
+        <div class="list-grid-item col-12 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/citas/editar/{{date.id}}" class="d-block pb-2"><strong><i class="fa fa-calendar-days"></i> {{date.dateTime|date('d/m/Y H:i') }}</strong></a>
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/citas/editar/{{date.id}}" class="d-block pb-2">Autor: <strong>{{date.author.name }}</strong></a>
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/citas/editar/{{date.id}}" class="d-block pb-2"><h2 class="item-description">{{date.description}}</h2></a>
+            <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/citas/editar/{{date.id}}" class="settings" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a> &nbsp; 
+            <a onclick="return confirm('¿Seguro que quieres eliminarla?');" href="{{ app.request.getSchemeAndHttpHost() }}/admin/citas/eliminar/{{date.id}}" class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+            
+        </div>
+
+        {% endfor %}
+        {% if dates|length == 0 %}
+            <p class="no-results" >No se encontraron elementos</p>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,20 @@
+# config/packages/lexik_jwt_authentication.yaml
+
+lexik_jwt_authentication:
+    secret_key: '%env(resolve:JWT_SECRET_KEY)%'
+    public_key: '%env(resolve:JWT_PUBLIC_KEY)%'
+    pass_phrase: '%env(JWT_PASSPHRASE)%'
+    user_identity_field: email # Campo del objeto User que se usará como identidad del usuario en el token
+    token_ttl: 3600 # Tiempo de vida del token en segundos
+    clock_skew: 60 # Permite ajustar el tiempo en segundos para asegurar que el token aún sea válido aunque el reloj del servidor y del cliente no estén sincronizados.
+    encoder:
+        signature_algorithm: HS256 # Algoritmo de firma utilizado para generar el token, como SHA256 o RSA
+        crypto_engine: openssl
+    token_extractors:
+        authorization_header:
+            enabled: true
+            prefix: 'Bearer '
+            name: Authorization
+        cookie:
+            enabled: true
+            name: BEARER

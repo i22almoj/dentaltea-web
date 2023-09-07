@@ -1,0 +1,27 @@
+{% if list.total > 0 %}
+<div class="pagination-wrap clearfix pt-3 text-right">
+    <div class="hint-text">
+        Mostrando 
+        {% if list.total > list.p_size %}
+            <b>{% if list.p_size < list.total %}{{list.p_size}}{% else %}{{list.total}}{% endif %}</b>
+            de <b>{{list.total}}</b> 
+            elemento{% if list.total > 1 %}s{% endif %}
+        {% else %}
+            <strong>todos</strong> los elementos
+        {% endif %}
+    </div>
+    {% if list.n_pages > 1 %}
+        <ul class="pagination mt-3">
+            {% if list.page > 1 %}<li class="page-item"><a page="1" class="page-link"><i class="fa-solid fa-angles-left"></i></a></li>{% endif %}
+            {% if list.page > 1 %}<li class="page-item"><a page="{{ (list.page - 1) }}" class="page-link"><i class="fa-solid fa-angle-left"></i></a></li>{% endif %}
+            {% if list.page > 2 %}<li class="page-item"><a page="{{ (list.page - 2) }}" class="page-link">{{ (list.page - 2) }}</a></li>{% endif %}
+            {% if list.page > 1 %}<li class="page-item"><a page="{{ (list.page - 1) }}" class="page-link">{{ (list.page - 1) }}</a></li>{% endif %}
+            <li class="page-item active"><a page="{{ list.page }}" class="page-link">{{ list.page }}</a></li>
+            {% if list.page < list.n_pages %}<li class="page-item"><a page="{{ (list.page + 1) }}"class="page-link">{{ (list.page + 1) }}</a></li>{% endif %}
+            {% if list.page < (list.n_pages - 1) %}<li class="page-item"><a page="{{ (list.page + 2) }}" class="page-link">{{ (list.page + 2) }}</a></li>{% endif %}
+            {% if list.page < list.n_pages %}<li class="page-item"><a page="{{ (list.page + 1) }}" class="page-link"><i class="fa-solid fa-angle-right"></i></a></li>{% endif %}
+            {% if list.page < list.n_pages %}<li class="page-item"><a page="{{list.n_pages}}" class="page-link"><i class="fa-solid fa-angles-right"></i></a></li>{% endif %}
+        </ul>
+    {% endif %}
+</div>
+{% endif %}

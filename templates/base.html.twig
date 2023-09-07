@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}DentalTEA{% endblock %}</title>
+
+        <link rel="shortcut icon" href="{{ app.request.getSchemeAndHttpHost() }}/images/favicon.png">
+
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+       <main id="main" class="d-flex"> 
+            {% include 'parts/sidebar.html.twig' %}
+            <section id="content-section">
+                {% include 'parts/header.html.twig' %}
+                <div id="content" class="px-2 px-md-3 px-lg-5">
+                    {% block body %}{% endblock %}
+                    {% include 'parts/footer.html.twig' %}
+                </div>
+                
+            </div>
+        </main>
+        
+        <script>
+            var base_url = "{{ url('home') }}";
+        </script>
+        
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
+</html>

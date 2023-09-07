@@ -1,0 +1,11 @@
+<div id="filter">
+    <div class="filter-field">
+        <label for="filter-author">Autor</label> 
+        <select id="filter-author" name="filter[author]" class="select2">
+            <option value="">Todos los autores</option>
+             {% for author in authors %}
+                <option value="{{author.id}}" {% if list.filter is not empty and author.id==list.filter.author %}selected{% endif %}>{{author.name}}</option>
+             {% endfor %}
+        </select>
+    </div>
+</div>

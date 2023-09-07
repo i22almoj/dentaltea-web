@@ -1,0 +1,32 @@
+<table class="list-table table table-striped table-hover list-table-dates">
+    <thead>
+        <tr>
+            <th width="60" class="col-id sortable {% if list.orderby == 'id' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}"  orderby="id">#</th>
+            <th width="150" class="col-datetime sortable {% if list.orderby == 'dateTime' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="dateTime">Fecha y hora</th>
+            <th class="col-description sortable {% if list.orderby == 'title' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="description">Descripción</th>
+            <th width="200" class="col-date sortable {% if list.orderby == 'creationTime' %}orderby {% if list.order == 'DESC' %}desc{% else %}asc{% endif %}{% endif %}" orderby="creationTime">Fecha de creación</th>
+            <th width="150" class="col-author">Autor</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for date in dates %}
+        <tr>
+            <td class="col-id"><a href="{{ app.request.getSchemeAndHttpHost() }}/admin/citas/editar/{{date.id}}">{{date.id}}</a></td>
+            <td class="col-datetime"><span class="d-none">{{date.dateTime|date('Y-m-d H:i:s') }}</span> {{date.dateTime|date('d/m/Y H:i') }}</td>
+            <td class="col-description"><a href="{{ app.request.getSchemeAndHttpHost() }}/admin/citas/editar/{{date.id}}">{{date.description}}</a></td>
+            <td class="col-date"><span class="d-none">{{date.creationTime |date('Y-m-d H:i:s') }}</span>{{date.creationTime |date('d/m/Y H:i') }}</td>
+            <td class="col-author"><a href="{{ app.request.getSchemeAndHttpHost() }}/admin/usuarios/editar/{{date.author.id}}" title="Editar usuario">{{date.author.name}}</a></td>
+            <td class="col-actions" width="100">
+                <a href="{{ app.request.getSchemeAndHttpHost() }}/admin/citas/editar/{{date.id}}" class="settings" title="Editar" data-toggle="tooltip"><i class="material-icons">&#xe3c9;</i></a> &nbsp; 
+                <a onclick="return confirm('¿Seguro que quieres eliminarla?');" href="{{ app.request.getSchemeAndHttpHost() }}/admin/citas/eliminar/{{date.id}}" class="delete" title="Eliminar" data-toggle="tooltip"><i class="material-icons">&#xe872;</i></a>
+            </td>
+        </tr>
+    {% endfor %}
+    {% if dates|length == 0 %}
+        <tr>
+            <td class="no-results" colspan="6">No se encontraron elementos</td>
+        </tr>
+    {% endif %}
+    </tbody>
+</table>

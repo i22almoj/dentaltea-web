@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editar consejo{% endblock %}
+
+{% block body %}
+    <h1 class="display-6">Editar consejo</h1>
+    <a class="go-back" href="{{ app.request.getSchemeAndHttpHost() }}/admin/consejos/"><i class="fa-solid fa-arrow-left"></i> Volver atrás</a>
+
+    <div id="form-wrap" class="mt-5  form-md">
+    
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+      
+    </div>
+    
+    <hr />
+
+    <p>Campos obligatorios *</p>
+    
+{% endblock %}
+
