@@ -115,7 +115,7 @@ class BaseController extends AbstractController
 */	
 	private function updateListParam($key, $number=false){
 		
-		if(!empty($_GET[$key])){
+		if(!empty($_GET[$key])){ 
 			$this->list[$key] = $_GET[$key];
 		}else if(!empty($this->list['default'][$key])){
 			$this->list[$key] = $this->list['default'][$key];

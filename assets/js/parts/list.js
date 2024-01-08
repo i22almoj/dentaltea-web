@@ -60,7 +60,7 @@ $(document).ready(function(){
                 $('#current-order').val('DESC');
             else
                 $('#current-order').val('ASC');
-                
+          
             $('#orderby').val($(this).attr('orderby')).trigger('change');
             
 

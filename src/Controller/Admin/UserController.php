@@ -49,7 +49,7 @@ class UserController extends BaseController
 	name: listQuery
 	description: Performs the query for the paginated list
 */		
-	public function listQuery($pagination=true): Array{
+	public function listQuery($pagination=true): Array{ 
 		return $this->repository->listUsers($this->list, $pagination);
 	}
 

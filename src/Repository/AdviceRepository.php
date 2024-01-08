@@ -51,15 +51,15 @@ class AdviceRepository extends ServiceEntityRepository
             $search = (empty($filter['search']))? '' : $filter['search'];
             if(!empty($search)) $filter['search'] = '%'.$search.'%';
             $qb->setParameters($filter);
-            if(!empty($search))   $qb->andWhere('u.title LIKE :search OR u.content LIKE :search');
+            if(!empty($search))   $qb->andWhere('u.title LIKE :search');
         }
-        if($pagination && !empty($params) && is_array($params) && !empty($params['orderby']) 
-        && !empty($params['order']) && !empty($params['offset']) && !empty($params['p_size'])){
-            $qb->orderBy('u.'.$params['orderby'], $params['order']);
+
+        $qb->orderBy((!empty($params['orderby'])) ? 'u.'.$params['orderby'] : 'u.id', (!empty($params['order'])&&strtolower($params['order'])=='desc') ? 'DESC' : 'ASC');
+
+        if($pagination && !empty($params) && is_array($params) && !empty($params['offset']) && !empty($params['p_size'])){
             $qb->setFirstResult($params['offset']);
             $qb->setMaxResults($params['p_size']);
         }else{
-            $qb->orderBy('u.sortNumber', 'ASC');
             $qb->setFirstResult(0);
         }
     

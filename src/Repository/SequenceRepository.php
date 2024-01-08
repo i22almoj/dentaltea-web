@@ -49,19 +49,23 @@ class SequenceRepository extends ServiceEntityRepository
         if(!empty($params['filter'])){
             $filter = $params['filter'];
             $search = (empty($filter['search']))? '' : $filter['search'];
-            if(!empty($search))   $qb->andWhere('u.description LIKE :search');
+            if(!empty($search)){
+                $filter['search'] = '%'.$search.'%';
+                $qb->andWhere('u.description LIKE :search');
+            }
             if(!empty($filter['author'])){   
                 $qb->andWhere('a.id = :author '); 
             }
             $qb->setParameters($filter);
             
         }
+
+        $qb->orderBy((!empty($params['orderby'])) ? 'u.'.$params['orderby'] : 'u.id', (!empty($params['order'])&&strtolower($params['order'])=='desc') ? 'DESC' : 'ASC');
+
         if($pagination==true){
-            $qb->orderBy((!empty($params['orderby'])) ? 'u.'.$params['orderby'] : 'u.id', (!empty($params['order'])&&strtolower($params['order'])=='desc') ? 'DESC' : 'ASC');
             $qb->setFirstResult((!empty($params['offset'])) ? intval($params['offset']) : 0 );
             $qb->setMaxResults((!empty($params['p_size'])) ? intval($params['p_size']) : 12 );
         }else{
-            $qb->orderBy('u.id', 'ASC');
             $qb->setFirstResult(0);
         }
         

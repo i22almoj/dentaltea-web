@@ -76,9 +76,11 @@ function initAddPictogram(){
                 <div class="handle"><i class="fas fa-arrows-alt"></i></div>
             </div>
         `;
-        $('#sequence-pictograms-list .row').html($('#sequence-pictograms-list .row').html()+html_item);
+        $('#sequence-pictograms-list .row').append(html_item);
+        initSortable();
         sortItemsUpdate();
         initDeletePictogram();
+        setTimeout(() => { sortItemsUpdate(); }, 500)
         $('#modal-add-pictogram .btn-close').trigger('click');
     });
 }

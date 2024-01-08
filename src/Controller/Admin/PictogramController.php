@@ -80,7 +80,7 @@ class PictogramController extends BaseController
 				}
 			}
 
-			if(empty($image)){ echo '<h1>Hola</h1>';
+			if(empty($image)){
 				$form->get('image')->addError(new FormError('Este campo es obligatorio.'));
 			}else{
 				$pictogram->setImage($image);

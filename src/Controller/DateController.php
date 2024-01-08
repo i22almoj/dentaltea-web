@@ -14,6 +14,13 @@ use App\Entity\Sequence;
 use App\Form\Type\UserDateFormType;
 use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\Messaging\CloudMessage;
+use Kreait\Firebase\Messaging\Message;
+use Kreait\Firebase\Messaging\Notification;
+use Kreait\Firebase\Messaging\ApnsConfig;
+
+
 
 class DateController extends AbstractController
 {
@@ -32,6 +39,25 @@ class DateController extends AbstractController
 */
 	public function index(UserInterface $currentUser, ManagerRegistry $doctrine): Response
     {  
+		
+		/* $factory = (new Factory)->withServiceAccount($this->getParameter('kernel.project_dir').'/dentaltea-a37e7-e99ed76884d0.json');
+        $messaging = $factory->createMessaging();
+		$time = time();
+		$topic = 'notification-1';
+        $image_url = 'https://dentaltea.autismocordoba.org/images/logo.png';
+       
+        $notification = ['notID' => $time.'-push', 'topic' => $topic, 'date_id' => 7, 'title' => 'Esto es una prueba', 'body' => 'Probando', 'message' => 'Probando', 'image' => $image_url, 
+		'vibrate' => 1, 'sound' => 'default'];
+		$apnsConfig = ApnsConfig::fromArray(['headers' => ['apns-priority' => '10',],'payload' => ['aps' => ['alert' => $notification,'badge' => 0,'sound' => 'default']]]);
+
+        //Send message for Android
+        $message = CloudMessage::withTarget('topic', $topic)->withData($notification);
+        $messaging->send($message);
+
+        //Send message for iOS
+        $message = CloudMessage::withTarget('topic', $topic)->withApnsConfig($apnsConfig);
+        $messaging->send($message);
+		*/
 		$dates = $this->repository->listDates(
             array(
                 'filter' => array(

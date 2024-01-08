@@ -33,7 +33,7 @@ $(document).ready(function() {
             return message;
             },
             loadingMore: function () {
-            return 'Cargando más resultados...';
+            return 'Cargando más resultados…';
             },
             maximumSelected: function (args) {
             var message = 'Sólo puede seleccionar ' + args.maximum + ' elemento';

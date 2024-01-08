@@ -56,13 +56,14 @@ class DateRepository extends ServiceEntityRepository
             }
             $qb->setParameters($filter);
         }
-        if($pagination && !empty($params) && is_array($params) && !empty($params['orderby']) 
-        && !empty($params['order']) && !empty($params['offset']) && !empty($params['p_size'])){
-            $qb->orderBy('u.'.$params['orderby'], $params['order']);
+
+        $qb->orderBy((!empty($params['orderby'])) ? 'u.'.$params['orderby'] : 'u.id', (!empty($params['order'])&&strtolower($params['order'])=='desc') ? 'DESC' : 'ASC');
+
+
+        if($pagination && !empty($params) && is_array($params) && !empty($params['offset']) && !empty($params['p_size'])){
             $qb->setFirstResult($params['offset']);
             $qb->setMaxResults($params['p_size']);
         }else{
-            $qb->orderBy('u.id', 'ASC');
             $qb->setFirstResult(0);
         }
     

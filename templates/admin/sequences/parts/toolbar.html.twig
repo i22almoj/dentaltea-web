@@ -20,7 +20,7 @@
                 <select id="orderby" name="orderby" class="select2">
                     <option value="id" {% if list.orderby == 'id' %}selected{% endif %}>ID</option>
                     <option value="description" {% if list.orderby == 'description' %}selected{% endif %}>Descripción</option>
-                    <option value="creationDate" {% if list.orderby == 'creationDate' %}selected{% endif %}>Fecha</option>
+                    <option value="creationTime" {% if list.orderby == 'creationTime' %}selected{% endif %}>Fecha</option>
                 </select>
                 <span class="sort sort-{{list.order}}"></span>
             </div>

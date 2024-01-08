@@ -27,7 +27,7 @@
                     <option value="email" {% if list.orderby == 'email' %}selected{% endif %}>Email</option>
                     <option value="role" {% if list.orderby == 'role' %}selected{% endif %}>Rol</option>
                     <option value="status" {% if list.orderby == 'status' %}selected{% endif %}>Estado</option>
-                    <option value="creationDate" {% if list.orderby == 'creationDate' %}selected{% endif %}>Fecha</option>
+                    <option value="creationTime" {% if list.orderby == 'creationTime' %}selected{% endif %}>Fecha</option>
                 </select>
                 <span class="sort sort-{{list.order}}"></span>
             </div>

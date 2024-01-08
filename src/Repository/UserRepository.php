@@ -48,7 +48,7 @@ class UserRepository extends ServiceEntityRepository
     } 
 
     public function listUsers($params=array(), $pagination=true): array
-    {   
+    {  
         $qb = $this->createQueryBuilder('u');
 
         if(!empty($params['filter'])){
@@ -61,16 +61,19 @@ class UserRepository extends ServiceEntityRepository
             if(!empty($filter['status']))	$qb->andWhere('u.status = :status ');
             if(!empty($search))   $qb->andWhere('u.name LIKE :search OR u.email LIKE :search');
         }
-        if($pagination && !empty($params) && is_array($params) && !empty($params['orderby']) 
-        && !empty($params['order']) && !empty($params['offset']) && !empty($params['p_size'])){
+        if(!empty($params) && !empty($params['order']) && !empty($params['orderby'])){
             $qb->orderBy('u.'.$params['orderby'], $params['order']);
+        }else{
+            $qb->orderBy('u.id', 'ASC');
+        }
+        
+        if($pagination && !empty($params) && is_array($params) && !empty($params['offset']) && !empty($params['p_size'])){
             $qb->setFirstResult($params['offset']);
             $qb->setMaxResults($params['p_size']);
         }else{
-            $qb->orderBy('u.id', 'ASC');
             $qb->setFirstResult(0);
         }
-        
+
         $query = $qb->getQuery();
 
         return $query->execute();

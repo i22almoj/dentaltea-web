@@ -136,3 +136,63 @@ class Pictogram
     }
 
 }
+/* 
+
+CREATE TABLE `advices` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `title` text DEFAULT NULL,
+ `content` text DEFAULT NULL,
+ `image` varchar(300) NOT NULL,
+ `sort_number` int(11) NOT NULL DEFAULT 0,
+ `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
+ PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `pictograms` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `image` varchar(300) NOT NULL,
+ `description` text DEFAULT NULL,
+ `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
+ PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `sequences` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `image` varchar(300) NOT NULL,
+ `title` varchar(200) NOT NULL,
+ `description` text DEFAULT NULL,
+ `author_id` int(11) DEFAULT NULL,
+ `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
+ PRIMARY KEY (`id`),
+ FOREIGN KEY (`author_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+);
+
+CREATE TABLE `sequence_pictograms` (
+ `sequence_id` int(11) NOT NULL,
+ `pictogram_id` int(11) NOT NULL,
+ `description` text DEFAULT NULL,
+ `sort_number` int(11) NOT NULL DEFAULT 0,
+ PRIMARY KEY (`sequence_id`, `pictogram_id`),
+ FOREIGN KEY (`sequence_id`) REFERENCES `sequences`(`id`) ON DELETE CASCADE,
+ FOREIGN KEY (`pictogram_id`) REFERENCES `pictograms`(`id`) ON DELETE CASCADE
+);
+
+CREATE TABLE `dates` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `date_date` datetime NOT NULL,
+ `description` text DEFAULT NULL,
+ `author_id` int(11) DEFAULT NULL,
+ `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
+ PRIMARY KEY (`id`),
+ FOREIGN KEY (`author_id`) REFERENCES `users`(`id`) ON DELETE CASCADE
+);
+
+CREATE TABLE `date_sequences` (
+ `date_id` int(11) NOT NULL,
+ `sequence_id` int(11) NOT NULL,
+ `sort_number` int(11) NOT NULL DEFAULT 0,
+ PRIMARY KEY (`date_id`, `sequence_id`),
+ FOREIGN KEY (`date_id`) REFERENCES `dates`(`id`) ON DELETE CASCADE,
+ FOREIGN KEY (`sequence_id`) REFERENCES `sequences`(`id`) ON DELETE CASCADE
+);
+*/

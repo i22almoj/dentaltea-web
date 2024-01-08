@@ -18,8 +18,6 @@ $(document).ready(function(){
     }
 
 
-    has-preview
-
     if($('.dropify').length>0){
         $('.dropify').dropify({
             messages: {
